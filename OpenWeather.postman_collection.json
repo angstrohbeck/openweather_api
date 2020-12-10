@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "da96a7a4-6ca4-418e-80f5-c8117e0c9c48",
+		"name": "OpenWeather",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Weather in New York",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "06181e44-bfaf-44da-b81a-bbeb5144fa37",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"          pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://api.openweathermap.org/data/2.5/group?id=5391791&appid={{OWapikey}}&units=imperial",
+					"protocol": "http",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"group"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5391791"
+						},
+						{
+							"key": "appid",
+							"value": "{{OWapikey}}"
+						},
+						{
+							"key": "units",
+							"value": "imperial"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Negative Test - Attempt to Change Weather Data in San Clemente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "727ff072-2797-486c-9fd2-e69a3fabdc3e",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"          pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"directly\": [\n      \"went\",\n      -893678678,\n      -406575172,\n      -1718325351.8765144,\n      false,\n      true\n    ],\n    \"near\": true,\n    \"went\": false,\n    \"shop\": false,\n    \"grandmother\": 2042064382.2426777,\n    \"accurate\": -372655635\n  },\n  true,\n  \"somehow\",\n  \"fly\",\n  \"extra\",\n  false\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://api.openweathermap.org/data/2.5/group?id=5391791&appid={{OWapikey}}&units=imperial",
+					"protocol": "http",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"group"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5391791"
+						},
+						{
+							"key": "appid",
+							"value": "{{OWapikey}}"
+						},
+						{
+							"key": "units",
+							"value": "imperial"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
